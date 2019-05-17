@@ -94,9 +94,11 @@ public class SFTPChannelUtil {
       if (logger.isDebugEnabled()) {
         logger.debug(String.format("sftp---Session ip[%s]port[%s]success", host, port));
       }
-    } catch (JSchException | SftpException e) {
+    } catch (JSchException e) {
       logger.error("SFTPChannelUtil connect error", e);
-    }
+    } catch (SftpException e) {
+        logger.error("SFTPChannelUtil connect error", e);
+      } 
     return sftp;
   }
 
